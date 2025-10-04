@@ -1,0 +1,680 @@
+:root{
+  --panel-width: 900px;
+  --panel-height: 140px;
+  --panel-top: 20px;
+  --panel-left: 48px;
+
+  --right-offset: 110px;
+  --title-top: 170px;
+  --btn-start-top: 270px;   /* tăng để tạo khoảng cách với title */
+  --btn-gap: 60px;          /* chỉnh khoảng cách nút nhỏ hơn 1 chút */
+  --btn-width: 260px;
+  --btn-height: 48px;
+}
+
+/* Reset */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{
+  height:100%;
+  width:100%;
+  font-family: 'Arial', sans-serif;
+  font-weight: normal;
+}
+
+/* Background mặc định (nếu chưa gán class page) */
+body{
+  background: url("assets/FULL_SCREEN_GREENHOUSE.png") no-repeat center center fixed;
+  background-size: cover;
+  overflow: hidden;
+  color: #fff;
+  font-weight: normal;
+}
+
+/* Background từng trang */
+body.home-page {
+  background: url("assets/FULL_SCREEN_HOME.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+body.greenhouse-page {
+  background: url("assets/FULL_SCREEN_GREENHOUSE.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+body.barn-page {
+  background: url("assets/FULL_SCREEN_BARN.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+
+/* ===== Weather panel ===== */
+.weather-panel{
+  position: absolute;
+  top: var(--panel-top);
+  left: var(--panel-left);
+  width: var(--panel-width);
+  height: var(--panel-height);
+
+  background: url("assets/weather_panel.png") no-repeat left center;
+  background-size: contain;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.panel-inner{
+  width:100%;
+  display:flex;
+  align-items:center;
+  padding: 12px 18px;
+}
+
+.panel-left{
+  width: 100px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  gap:6px;
+}
+
+.weather-icon{
+  width:36px;
+  height:36px;
+  display:block;
+  margin-bottom:4px;
+}
+
+.temp, .hum{
+  font-size:14px;
+  line-height:1;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+}
+
+.panel-placeholder{
+  width: 170px;
+  height: 88px;
+  background: #ffffff;
+  margin: 0 18px;
+  border-radius:2px;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.2) inset;
+}
+
+.panel-text{
+  flex: 1;
+  max-width: calc(var(--panel-width) - 100px - 170px - 150px);
+  overflow: hidden;
+  pointer-events: auto;
+}
+
+#weather_description{
+  font-size:14px;
+  line-height:1.25;
+  color:#fff;
+  text-align: left;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; 
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ===== GREENHOUSE Title ===== */
+.greenhouse-title{
+  position: absolute;
+  top: var(--title-top);
+  right: var(--right-offset);
+  width: 250px;   /* chỉnh theo tỉ lệ thật của ảnh */
+  height: 70px;   /* chỉnh theo tỉ lệ thật của ảnh */
+
+  background: url("assets/greenhouse_label.png") no-repeat center center;
+  background-size: contain;
+
+  pointer-events: none;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: url("assets/curtain_overlay.png") no-repeat center center;
+  background-size: cover;
+
+  display: none;      /* ẩn mặc định */
+  z-index: 0;         /* ở giữa background và UI elements */
+  pointer-events: none; /* click xuyên qua */
+
+}
+
+/* giữ weather panel + button cao hơn overlay */
+.weather-panel {
+  position: absolute;
+  z-index: 10;
+}
+
+.button-group {
+  position: absolute;
+  z-index: 20;
+}
+
+
+.light-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 223, 100, 0.25); /* vàng nhạt */
+  display: none;
+  z-index: 1; 
+  pointer-events: none; /* không chặn click */
+}
+
+
+/* ===== Button column ===== */
+.button-group{
+  position: absolute;
+  right: var(--right-offset);
+  top: var(--btn-start-top);
+  display:flex;
+  flex-direction:column;
+  gap: var(--btn-gap);
+  width: var(--btn-width);
+  align-items: flex-end;
+}
+
+.control-btn{
+  position: relative;
+  width: var(--btn-width);
+  height: var(--btn-height);
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  display:block;
+  outline: none;
+  z-index: 25; /* Đảm bảo buttons luôn ở trên overlay */
+}
+
+/* hiệu ứng khi hover */
+.control-btn:hover {
+  filter: brightness(1.5); /* sáng hơn chút */
+}
+
+/* hiệu ứng khi ấn giữ */
+.control-btn:active {
+  transform: scale(0.95);  /* nhỏ lại 5% */
+  filter: brightness(0.85); /* tối đi chút */
+}
+
+.control-btn img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  display:block;
+}
+
+.control-btn span{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  color: #fff;
+  font-size: 15px;
+  pointer-events: none;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.light-control {
+  position: fixed;              /* nằm giữa màn hình, không phụ thuộc nút */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* canh đúng giữa */
+  
+  width: 400px;
+  height: 200px;
+  background: url("assets/noti_label.png") no-repeat center center;
+  background-size: contain;
+
+  display: none;                /* ẩn mặc định */
+  align-items: center;          /* canh chữ theo khung */
+  justify-content: center;
+  z-index: 2000;                /* nổi trên mọi thứ */
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+}
+
+.reset-group {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-left: 10px;
+  z-index: 3000;
+}
+
+.reset-group button {
+  width: 120px;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+}
+
+.reset-group button:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+.reset-group button:active {
+  transform: scale(0.95);
+}
+
+
+.light-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: url("assets/btn_light.png") no-repeat center center;
+  background-size: cover;
+
+  display: none;       /* ẩn mặc định */
+  z-index: 1;          /* thấp hơn button & weather */
+  pointer-events: none; /* không chặn click */
+  opacity: 0.5;        /* mặc định sáng 50% */
+}
+
+
+.irrigation-noti {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 120px;
+  background: url("assets/noti_label.png") no-repeat center center;
+  background-size: contain;
+  display: none; /* ẩn mặc định */
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+}
+
+.irrigation-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.fertilizer-noti {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 120px;
+  background: url("assets/noti_label.png") no-repeat center center;
+  background-size: contain;
+  display: none; /* ẩn mặc định */
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+}
+
+.fertilizer-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.noti-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  width: 400px;
+  height: 200px;
+  background: url("assets/noti_label.png") no-repeat center center;
+  background-size: contain;
+
+  display: none;            /* ẩn mặc định */
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;            /* nổi trên cùng */
+}
+
+.noti-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  width: 70%;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+}
+
+
+.light-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* chữ nằm ngay giữa ảnh */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 70%;
+}
+
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.7);
+}
+.close-btn:hover {
+  color: #ff8080;
+}
+
+.control-btn.active span{
+  color: #fffb;
+}
+
+.back-btn {
+  position: absolute;
+  bottom: 20px;   /* thay vì top */
+  left: 20px;     /* sát mép trái */
+  width: 140px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 3000; /* nổi trên cùng */
+}
+
+.back-btn img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.back-btn span {
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+}
+
+.back-btn:hover {
+  filter: brightness(1.3);
+}
+
+.back-btn:active {
+  transform: scale(0.95);
+  filter: brightness(0.8);
+}
+
+@media (max-width: 1200px){
+  :root{ --panel-width: 760px; --panel-left: 24px; --right-offset: 32px; --btn-width: 220px;}
+  #weather_description{-webkit-line-clamp:3; line-clamp:3;}
+}
+
+/* ========== HOME PAGE ========== */
+.home-buttons {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 200px; /* khoảng cách giữa Greenhouse và Barn */
+}
+
+.home-btn {
+  position: relative;
+  width: 200px;
+  height: 60px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.home-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.home-btn span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.7);
+  pointer-events: none;
+}
+
+.home-btn:hover {
+  filter: brightness(1.3);
+}
+
+.home-btn:active {
+  transform: scale(0.95);
+  filter: brightness(0.85);
+}
+
+body.home {
+  background: url("assets/overview.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* Barn background */
+body.barn {
+  background: url("assets/FULL_SCREEN_BARN.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* Barn title */
+.barn-title {
+  position: absolute;
+  top: var(--title-top);
+  right: var(--right-offset);
+  width: 250px;
+  height: 70px;
+  background: url("assets/barn_label.png") no-repeat center center;
+  background-size: contain;
+  pointer-events: none;
+}
+
+/* Button grid 2 cột */
+.button-grid {
+  position: absolute;
+  right: var(--right-offset);
+  top: var(--btn-start-top);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px 20px; /* khoảng cách dọc và ngang */
+  width: calc(var(--btn-width) * 2 + 20px);
+  max-width: 600px;
+  justify-items: end;
+}
+
+.button-grid .control-btn {
+  width: var(--btn-width);
+  height: var(--btn-height);
+}
+
+/* nút quay lại */
+.back-btn {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  z-index: 1500;
+}
+.back-btn:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+/* ===== Intro overlay & main menu (Smart Farm) ===== */
+#introOverlay {
+  position: fixed;
+  inset: 0;
+  background: black;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#introOverlay video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none; /* không chặn click lên Skip */
+}
+
+#skipIntroBtn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 10000;
+  background: rgba(255,255,255,0.9);
+  border: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Main menu */
+.menu-root {
+  padding: 20px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background: linear-gradient(180deg,#f8fff6,#e8f7ef);
+}
+.menu-header {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 18px;
+  color: #2a5d2b;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+.menu-container {
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+}
+
+/* left video area */
+.left-video {
+  flex: 2;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #ddd;
+  min-height: 360px;
+}
+.left-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* right column buttons */
+.right-buttons {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center;
+}
+.menu-btn {
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: none;
+  background: #4caf50;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 700;
+}
+.menu-btn:hover { transform: translateY(-2px); }
+
+/* small screens */
+@media (max-width:900px){
+  .menu-container{ flex-direction:column; }
+  .right-buttons{ flex-direction:row; flex-wrap:wrap; justify-content:center;}
+  .menu-btn { flex: 1 1 45%; }
+  .left-video { min-height:220px; }
+}
+
+.back-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #4caf50;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  z-index: 1000;
+}
+.back-btn img {
+  width: 20px;
+  height: 20px;
+}
+.back-btn:hover {
+  background: #45a049;
+}

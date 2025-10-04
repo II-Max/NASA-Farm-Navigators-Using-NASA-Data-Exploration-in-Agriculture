@@ -1,0 +1,129 @@
+/* File: scoreboard-style.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+    --primary-green: #4CAF50;
+    --background-color: #f0f4f8;
+    --card-bg: #ffffff;
+    --text-dark: #333;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --border-radius: 12px;
+    --gold: #ffd700;
+    --silver: #c0c0c0;
+    --bronze: #cd7f32;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-dark);
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: var(--primary-green);
+    margin-bottom: 30px;
+    font-size: 2.8rem;
+    text-shadow: 1px 1px 2px var(--shadow-color);
+}
+
+.scoreboard-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    border-top: 5px solid var(--primary-green);
+}
+
+.scoreboard-card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+    color: var(--text-dark);
+}
+
+.score-list {
+    list-style: none;
+    padding: 0;
+}
+
+.score-list li {
+    display: flex;
+    align-items: center;
+    padding: 12px 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.score-list li:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.score-list li:hover {
+    background-color: #e8f5e9;
+}
+
+.score-list .rank {
+    font-size: 1.5rem;
+    width: 50px;
+    text-align: center;
+}
+
+.score-list .score {
+    flex-grow: 1;
+    font-weight: 600;
+}
+
+.score-list .time {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.error-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #c0392b;
+    background-color: #fbeae5;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    border: 1px solid #c0392b;
+}
+
+.back-link-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.back-link {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: var(--primary-green);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 50px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+}
+
+.back-link:hover {
+    background-color: #388E3C;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}

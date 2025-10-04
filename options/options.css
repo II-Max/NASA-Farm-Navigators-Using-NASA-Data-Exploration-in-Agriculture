@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* ======================================= */
+/* 1. BODY & LAYOUT */
+/* ======================================= */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f7fa; /* Light, modern background */
+    color: #333;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Deeper shadow */
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 15px;
+}
+
+h1 {
+    color: #2c3e50;
+    font-size: 2.2em;
+    margin-bottom: 5px;
+}
+
+h2 {
+    color: #34495e;
+    font-size: 1.5em;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* ======================================= */
+/* 2. CONNECTION STATUS */
+/* ======================================= */
+.status {
+    /* Äáº£m báº£o tráº¡ng thÃ¡i káº¿t ná»‘i náº±m trÃªn má»™t dÃ²ng */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #ecf0f1;
+    border-radius: 20px;
+    font-weight: 700;
+    color: #34495e;
+    max-width: 300px;
+    margin: 10px auto;
+}
+
+.connection-status {
+    width: 14px;
+    height: 14px;
+    border: 2px solid #fff; /* White border for visibility */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+#statusText {
+    transition: color 0.3s;
+}
+
+/* ======================================= */
+/* 3. CONTROL PANEL & BUTTONS */
+/* ======================================= */
+.control-panel {
+    border: 1px solid #e0e0e0;
+    padding: 25px;
+    border-radius: 8px;
+    background-color: #fcfcfc;
+}
+
+.buttons {
+    /* Sáº¯p xáº¿p cÃ¡c nÃºt thÃ nh lÆ°á»›i 3 cá»™t Ä‘á»ƒ gá»n gÃ ng hÆ¡n */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+/* Base button style */
+button {
+    padding: 15px 10px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 6px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-transform: uppercase;
+}
+
+/* NÃºt ON (Xanh lÃ¡) */
+[onclick$='1)'] { /* Chá»n nÃºt cÃ³ sá»‘ 1 (ON) */
+    background-color: #4CAF50;
+    color: white;
+    box-shadow: 0 4px #388e3c;
+}
+
+[onclick$='1)']:hover {
+    background-color: #45a049;
+}
+
+[onclick$='1)']:active {
+    box-shadow: 0 1px #388e3c;
+    transform: translateY(3px);
+}
+
+/* NÃºt OFF (Äá») */
+[onclick$='2)'] { /* Chá»n nÃºt cÃ³ sá»‘ 2 (OFF) */
+    background-color: #f44336;
+    color: white;
+    box-shadow: 0 4px #d32f2f;
+}
+
+[onclick$='2)']:hover {
+    background-color: #d32f2f;
+}
+
+[onclick$='2)']:active {
+    box-shadow: 0 1px #d32f2f;
+    transform: translateY(3px);
+}
+
+
+/* ======================================= */
+/* 4. SIGNAL STATUS */
+/* ======================================= */
+.signal-info {
+    border-top: 1px dashed #ddd;
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+.signal-info h3 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.signal-status {
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 1.1em;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+/* ======================================= */
+/* 5. LOG PANEL */
+/* ======================================= */
+.log-panel {
+    margin-top: 35px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.log-container {
+    height: 250px; /* TÄƒng chiá»u cao log */
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 0;
+    background-color: #fefefe;
+    border-radius: 6px;
+}
+
+.log-entry {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    font-size: 0.9em;
+    transition: background-color 0.1s;
+}
+
+.log-entry:hover {
+    background-color: #f9f9f9;
+}
+
+.log-entry:last-child {
+    border-bottom: none;
+}
+
+.success { color: #4CAF50; }
+.error { color: #f44336; }
+.response { color: #2196f3; } /* MÃ u xanh dÆ°Æ¡ng cho pháº£n há»“i */
+
+/* ======================================= */
+/* 6. FOOTER & MEDIA QUERIES */
+/* ======================================= */
+footer {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #e0e0e0;
+    color: #7f8c8d;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .buttons {
+        grid-template-columns: repeat(2, 1fr); /* 2 cá»™t trÃªn mobile */
+        gap: 10px;
+    }
+
+    /* CÃ¡c nÃºt Táº®T sáº½ náº±m bÃªn dÆ°á»›i nÃºt Má»ž trÃªn mÃ n hÃ¬nh nhá» */
+    [onclick$='1)'], [onclick$='2)'] {
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .buttons {
+        grid-template-columns: 1fr; /* 1 cá»™t trÃªn Ä‘iá»‡n thoáº¡i ráº¥t nhá» */
+    }
+}

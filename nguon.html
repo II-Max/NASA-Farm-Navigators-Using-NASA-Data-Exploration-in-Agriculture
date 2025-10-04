@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông Tin Nền Tảng Dự Án</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --background-color: #ecf0f1;
+            --card-background: #ffffff;
+            --text-color: #34495e;
+            --heading-color: #2c3e50;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom-left-radius: var(--border-radius);
+            border-bottom-right-radius: var(--border-radius);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+
+        .header p {
+            margin-top: 10px;
+            font-size: 1.2em;
+            font-weight: 300;
+        }
+
+        .section {
+            margin-top: 40px;
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: var(--heading-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--secondary-color);
+            display: inline-block;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background-color: var(--card-background);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--secondary-color);
+            font-size: 1.4em;
+        }
+
+        .card p {
+            margin-bottom: 0;
+            font-size: 1em;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .tech-item {
+            background-color: var(--card-background);
+            padding: 20px 10px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+        
+        .tech-item:hover {
+            transform: scale(1.05);
+        }
+
+        .tech-item img {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 10px;
+        }
+
+        .tech-item span {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+
+        /* === PHẦN CSS ĐÃ CẬP NHẬT CHO NÚT BẤM === */
+        .back-button {
+            position: fixed;
+            top: 50%; /* Đưa nút lên giữa chiều cao màn hình */
+            right: 25px;
+            transform: translateY(-50%); /* Căn chỉnh lại cho nút nằm chính giữa */
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-50%) scale(1.05); /* Hiệu ứng khi di chuột */
+        }
+        /* === KẾT THÚC PHẦN CẬP NHẬT === */
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Tổng Quan Nền Tảng Kỹ Thuật & Khoa Học</h1>
+        <p>Các nguồn tài nguyên, công nghệ và dữ liệu được sử dụng để xây dựng dự án</p>
+    </div>
+
+    <div class="container">
+
+        <div class="section">
+            <h2 class="section-title">Nguồn Tham Khảo & Tư Vấn Chuyên Môn</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Viện Khoa học Nông nghiệp Việt Nam (VAAS)</h3>
+                    <p>Cơ quan nghiên cứu hàng đầu, cung cấp kiến thức chuyên sâu về khoa học nông nghiệp, chăn nuôi và các giống bò tại Việt Nam.</p>
+                </div>
+                <div class="card">
+                    <h3>Bộ Nông nghiệp và Phát triển nông thôn</h3>
+                    <p>Cung cấp các thông tin chính thống về chính sách, thị trường, và các kỹ thuật canh tác, chăn nuôi tiên tiến.</p>
+                </div>
+                <div class="card">
+                    <h3>Tổ chức Nông Lương Liên Hợp Quốc (FAO)</h3>
+                    <p>Cung cấp dữ liệu, phân tích và báo cáo toàn cầu về ngành nông nghiệp, an ninh lương thực và ngành chăn nuôi bò.</p>
+                </div>
+                <div class="card">
+                    <h3>National Geographic</h3>
+                    <p>Nguồn thông tin tổng quan về các đặc điểm sinh học, môi trường sống và tập tính của các loài động vật, bao gồm cả loài bò.</p>
+                </div>
+                 <div class="card">
+                    <h3>Tạp chí & Bài báo Khoa học</h3>
+                    <p>Các tài liệu học thuật từ những tạp chí uy tín như <i>Journal of Integrative Agriculture</i>, <i>Agricultural Journal</i> và cơ sở dữ liệu ScienceDirect.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Nguồn Dữ Liệu Thời Tiết</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>NASA GMAO Model via Open-Meteo</h3>
+                    <p>Sử dụng dữ liệu từ mô hình dự báo toàn cầu của Global Modeling and Assimilation Office (GMAO) thuộc NASA để cung cấp thông tin thời tiết chính xác và đáng tin cậy.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Công Nghệ Và Công Cụ Sử Dụng</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <img src="icon/python.svg" alt="Python Icon">
+                    <span>Python</span>
+                </div>
+                <div class="tech-item">
+                     <img src="icon/html.svg" alt="HTML5 Icon">
+                    <span>HTML</span>
+                </div>
+                <div class="tech-item">
+                    <img src="icon/css.svg" alt="CSS3 Icon">
+                    <span>CSS</span>
+                </div>
+                <div class="tech-item">
+                    <img src="icon/javascript.svg" alt="JavaScript Icon">
+                    <span>JavaScript</span>
+                </div>
+                 <div class="tech-item">
+                    <img src="icon/php.svg" alt="PHP Icon">
+                    <span>PHP</span>
+                </div>
+                <div class="tech-item">
+                    <img src="icon/xampp.svg" alt="XAMPP Icon">
+                    <span>XAMPP</span>
+                </div>
+                 <div class="tech-item">
+                    <img src="icon/mysql.svg" alt="MySQL Icon">
+                    <span>MySQL</span>
+                </div>
+                 <div class="tech-item">
+                    <img src="icon/canva.svg" alt="Canva Icon">
+                    <span>Canva</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 - Báo cáo tổng quan nền tảng dự án</p>
+    </div>
+
+    <a href="index.php" class="back-button">↩ Quay lại</a>
+
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng Điều Khiển PLC</title>
+    <script src="../config.js"></script>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 20px; background-color: #f7f7f7; color: #333; }
+        .container { max-width: 900px; margin: 0 auto; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); }
+        h1, h2 { text-align: center; color: #2c3e50; }
+        .status-bar { text-align: center; margin-bottom: 20px; padding: 10px; background-color: #f8f9fa; border-radius: 4px; font-weight: bold; }
+        .connection-status { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 8px; background-color: #ccc; }
+        .control-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .control-group { border: 1px solid #e0e0e0; border-radius: 8px; padding: 15px; }
+        .control-group h3 { margin-top: 0; text-align: center; color: #34495e; }
+        .buttons { display: flex; justify-content: center; gap: 15px; }
+        button { padding: 12px 20px; font-size: 16px; border: none; border-radius: 5px; cursor: pointer; transition: all 0.2s; color: white; min-width: 120px; }
+        .btn-on { background-color: #27ae60; }
+        .btn-on:hover { background-color: #229954; }
+        .btn-off { background-color: #c0392b; }
+        .btn-off:hover { background-color: #a93226; }
+        .btn-single { background-color: #2980b9; }
+        .btn-single:hover { background-color: #2471a3; }
+        .log-panel { margin-top: 30px; }
+        .log-container { height: 150px; overflow-y: auto; border: 1px solid #ddd; padding: 10px; background-color: #f8f9fa; border-radius: 4px; font-family: monospace; font-size: 14px; }
+        .log-entry { padding: 5px; border-bottom: 1px solid #eee; }
+        .log-entry:last-child { border-bottom: none; }
+        .log-entry.error { color: #c0392b; }
+        .log-entry.response { color: #27ae60; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bảng Điều Khiển PLC</h1>
+        <div class="status-bar">
+            <span id="connectionStatus" class="connection-status"></span>
+            <span id="statusText">Connected</span>
+        </div>
+
+        <div class="control-grid">
+            <div class="control-group">
+                <h3>Tưới Cây</h3>
+                <div class="buttons">
+                    <button class="btn-on" onclick="sendSignal('nuoc1')">Mở Nước</button>
+                    <button class="btn-off" onclick="sendSignal('nuoc2')">Tắt Nước</button>
+                </div>
+            </div>
+            <div class="control-group">
+                <h3>Sưởi Ấm</h3>
+                <div class="buttons">
+                    <button class="btn-on" onclick="sendSignal('suoi1')">Mở Sưởi</button>
+                    <button class="btn-off" onclick="sendSignal('suoi2')">Tắt Sưởi</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <h3>Rèm Che (Tuần tự)</h3>
+                <div class="buttons">
+                    <button class="btn-on" onclick="sendSignalWithFollowUp('rem1', 'rem2')">Mở (rem1 -> rem2)</button>
+                    <button class="btn-off" onclick="sendSignalWithFollowUp('rem2', 'rem22')">Đóng (rem2 -> rem22)</button>
+                </div>
+            </div>
+            <div class="control-group">
+                <h3>Quạt Thông Gió</h3>
+                <div class="buttons">
+                    <button class="btn-on" onclick="sendSignal('quat1')">Mở Quạt</button>
+                    <button class="btn-off" onclick="sendSignal('quat2')">Tắt Quạt</button>
+                </div>
+            </div>
+            <div class="control-group">
+                <h3>Đèn Sưởi Phụ</h3>
+                <div class="buttons">
+                    <button class="btn-on" onclick="sendSignal('densuoi1')">Mở Đèn</button>
+                    <button class="btn-off" onclick="sendSignal('densuoi2')">Tắt Đèn</button>
+                </div>
+            </div>
+            <div class="control-group">
+                <h3>Nước Uống</h3>
+                <div class="buttons">
+                    <button class="btn-on" onclick="sendSignal('nuocuong1')">Bơm Nước</button>
+                    <button class="btn-off" onclick="sendSignal('nuocuong2')">Tắt Bơm</button>
+                </div>
+            </div>
+            <div class="control-group">
+                <h3>Trộn Thức Ăn</h3>
+                <div class="buttons">
+                    <button class="btn-on" onclick="sendSignal('tronthucan1')">Bật Trộn</button>
+                    <button class="btn-off" onclick="sendSignal('tronthucan2')">Tắt Trộn</button>
+                </div>
+            </div>
+            <div class="control-group">
+                <h3>Phun Thuốc</h3>
+                <div class="buttons">
+                    <button class="btn-on" onclick="sendSignal('phun1')">Bật Phun</button>
+                    <button class="btn-off" onclick="sendSignal('phun2')">Tắt Phun</button>
+                </div>
+            </div>
+            <div class="control-group">
+                <h3>Băng Tải</h3>
+                <div class="buttons">
+                    <button class="btn-single" onclick="sendSignal('bangtai')">Chạy Băng Tải</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="log-panel">
+            <h2>Nhật ký hoạt động</h2>
+            <div id="logContainer" class="log-container"></div>
+        </div>
+    </div>
+
+    <script>
+        const statusText = document.getElementById('statusText');
+        const connectionStatus = document.getElementById('connectionStatus');
+        const logContainer = document.getElementById('logContainer');
+
+        function addToLog(message, type = '') {
+            const logEntry = document.createElement('div');
+            logEntry.className = `log-entry ${type}`;
+            logEntry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            logContainer.appendChild(logEntry);
+            logContainer.scrollTop = logContainer.scrollHeight;
+        }
+
+        function setStatus(text, type) {
+            statusText.textContent = text;
+            if (type === 'success') connectionStatus.style.backgroundColor = '#27ae60';
+            else if (type === 'error') connectionStatus.style.backgroundColor = '#c0392b';
+            else connectionStatus.style.backgroundColor = '#f39c12';
+        }
+
+        // HÀM CỐT LÕI: Gửi tín hiệu với một tín hiệu khác theo sau 500ms
+        async function sendSignalWithFollowUp(primarySignal, followUpSignal) {
+            try {
+                // 1. Gửi tín hiệu chính ngay lập tức
+                await sendSignal(primarySignal);
+                
+                // 2. Bắt đầu chờ 500ms
+                addToLog(`Đợi 500ms để gửi tín hiệu phụ: ${followUpSignal}`);
+                setTimeout(async () => {
+                    try {
+                        // 3. Sau 500ms, gửi tín hiệu thứ hai
+                        await sendSignal(followUpSignal);
+                    } catch (error) {
+                        addToLog(`Lỗi khi gửi tín hiệu phụ ${followUpSignal}: ${error.message}`, 'error');
+                    }
+                }, 500); // 500 mili-giây
+                
+            } catch (error) {
+                // Lỗi của tín hiệu chính đã được log trong hàm sendSignal, không cần xử lý lại
+            }
+        }
+
+        async function sendSignal(signal) {
+            const nodeRedUrl = PLC_CONFIG.NODE_RED_URL;
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 giây timeout
+
+            addToLog(`Đang gửi: ${signal}`);
+            setStatus(`Đang gửi lệnh: ${signal}...`, 'sending');
+
+            try {
+                const response = await fetch(nodeRedUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ signal }),
+                    signal: controller.signal
+                });
+
+                clearTimeout(timeoutId);
+
+                if (!response.ok) {
+                    throw new Error(`Lỗi HTTP: ${response.status} ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                const message = data.message || `Phản hồi thành công cho: ${signal}`;
+                addToLog(`Phản hồi: ${message}`, 'response');
+                setStatus('Thành công!', 'success');
+
+                return data;
+
+            } catch (error) {
+                clearTimeout(timeoutId);
+                let errorMessage;
+                if (error.name === 'AbortError') {
+                    errorMessage = 'Lỗi: Yêu cầu hết thời gian chờ (Timeout). Node-RED không phản hồi.';
+                } else {
+                    errorMessage = `Lỗi kết nối: ${error.message}. Hãy kiểm tra Node-RED có đang chạy không.`;
+                }
+                addToLog(errorMessage, 'error');
+                setStatus('Lỗi kết nối', 'error');
+                throw error;
+            }
+        }
+
+        window.onload = () => addToLog('Hệ thống sẵn sàng.');
+    </script>
+</body>
+</html>

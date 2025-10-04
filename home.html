@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Custom Mode - Home</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --card-overlay: rgba(0, 0, 0, 0.45);
+      --card-overlay-hover: rgba(0, 0, 0, 0.25);
+    }
+    
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: 'Nunito', 'Segoe UI', Roboto, Arial, sans-serif;
+      color: #fff;
+    }
+
+    body {
+      background-image: url('assets/overview.png');
+      background-size: cover;
+      background-position: center center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .page-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(4px);
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      text-align: center;
+    }
+
+    .title {
+      font-size: 3rem;
+      font-weight: 800;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+    }
+
+    .choices {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* --- The new "Choice Card" style --- */
+    .choice-card {
+      position: relative;
+      width: 300px;
+      height: 400px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      
+      text-decoration: none;
+      color: #fff;
+      
+      background-size: cover;
+      background-position: center;
+      transition: all 0.35s ease-out;
+    }
+
+    /* Card overlay for text readability */
+    .choice-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--card-overlay);
+      transition: background 0.35s ease-out;
+      z-index: 1;
+    }
+
+    /* Hover effect */
+    .choice-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+    .choice-card:hover::before {
+      background: var(--card-overlay-hover);
+    }
+
+    /* Set background images for each card */
+    #btn_greenhouse {
+      background-image: url('assets/greenhouse-bg.jpg'); /* ⬅️ THAY ẢNH CỦA BẠN */
+    }
+    #btn_barn {
+      background-image: url('assets/barn-bg.jpg'); /* ⬅️ THAY ẢNH CỦA BẠN */
+    }
+
+    .card-emoji {
+      font-size: 4rem;
+      z-index: 2;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+    }
+
+    .card-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      z-index: 2;
+    }
+
+    .back-btn {
+      position: fixed;
+      left: 20px;
+      top: 20px;
+      background: rgba(255, 255, 255, 0.95);
+      color: #333;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 100vw;
+      cursor: pointer;
+      z-index: 3;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      font-weight: 700;
+      font-family: 'Nunito', sans-serif;
+      transition: all 0.2s ease;
+    }
+    .back-btn:hover {
+        transform: scale(1.05);
+        background: #fff;
+    }
+
+    @media (max-width: 700px) {
+      .choices {
+        flex-direction: column;
+        gap: 25px;
+      }
+      .choice-card {
+        width: 80vw;
+        max-width: 300px;
+        height: 250px;
+      }
+      .title { font-size: 2.2rem; }
+      .card-emoji { font-size: 3rem; }
+      .card-title { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <button class="back-btn" id="btn_back">⬅️ Về Menu</button>
+  <div class="page-overlay" aria-hidden="true"></div>
+  
+  <div class="content">
+    <h1 class="title">Chế Độ Tùy Chỉnh</h1>
+    <div class="choices">
+      <a href="greenhouse/greenhouse.php" class="choice-card" id="btn_greenhouse">
+        <div class="card-emoji">🌱</div>
+        <div class="card-title">Nhà Kính</div>
+      </a>
+
+      <a href="livestock/livestock.php" class="choice-card" id="btn_barn">
+        <div class="card-emoji">🐄</div>
+        <div class="card-title">Nông Trại</div>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript giờ chỉ cần cho nút Back
+    document.getElementById('btn_back').addEventListener('click', () => {
+      window.location.href = 'index.php'; // Hoặc trang menu chính của bạn
+    });
+  </script>
+</body>
+</html>
