@@ -1,0 +1,1718 @@
+[
+    {
+        "id": "d89f4497fa0cfb6c",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "569df64ca76dccf8",
+        "type": "inject",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Bật M0.1",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 1140,
+        "y": 720,
+        "wires": [
+            [
+                "51cbbdd6032e73d2"
+            ]
+        ]
+    },
+    {
+        "id": "432264adf83f5444",
+        "type": "inject",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Tắt M0.1",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "false",
+        "payloadType": "bool",
+        "x": 1140,
+        "y": 760,
+        "wires": [
+            [
+                "51cbbdd6032e73d2"
+            ]
+        ]
+    },
+    {
+        "id": "4b118b7c3b6e4a80",
+        "type": "http in",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Chung",
+        "url": "/choice",
+        "method": "post",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 150,
+        "y": 520,
+        "wires": [
+            [
+                "ccd0649030859bf6"
+            ]
+        ]
+    },
+    {
+        "id": "ccd0649030859bf6",
+        "type": "switch",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Controls",
+        "property": "payload.signal",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "nuoc1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "nuoc2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "suoi1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "suoi2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "rem1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "rem2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "phun1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "phan1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "phan2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "quat1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "quat2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "densuoi1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "densuoi2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "nuocuong1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "nuocuong2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "tronthucan1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "tronthucan2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "thuoc1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "thuoc2",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            },
+            {
+                "t": "eq",
+                "v": "phunsuong1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "phunsuong2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "OFFALL",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 23,
+        "x": 320,
+        "y": 540,
+        "wires": [
+            [
+                "641961ad70a0117c"
+            ],
+            [
+                "e492978a0cab4f4e"
+            ],
+            [
+                "8b48318a8d19f59b"
+            ],
+            [
+                "9b17e331c695c52a"
+            ],
+            [
+                "e202183f6e2bc154"
+            ],
+            [
+                "706e81788b9f5faa"
+            ],
+            [
+                "83ba1e8d7f2ea86a"
+            ],
+            [
+                "746f1f4becab8ca4"
+            ],
+            [
+                "08ceba5dc7525e48"
+            ],
+            [
+                "ee6b3d62511f5941"
+            ],
+            [
+                "5043845722801e81"
+            ],
+            [
+                "be73869f2f49fc64"
+            ],
+            [
+                "1bdea1ac06d85952"
+            ],
+            [
+                "0b1c3dbeedb0f478"
+            ],
+            [
+                "e254647ef7a13fb0"
+            ],
+            [
+                "0204835c7c917971",
+                "dda36643521ae9cf"
+            ],
+            [
+                "4b9eb7853ca1a70d"
+            ],
+            [
+                "4893363c8013f3ae"
+            ],
+            [
+                "4b9eb7853ca1a70d"
+            ],
+            [
+                "3017e826bf881fd5"
+            ],
+            [
+                "16f3fa28f5ca4849"
+            ],
+            [
+                "0a0af54a1d1dac6d"
+            ],
+            [
+                "25b71cd6ca3b27e0"
+            ]
+        ]
+    },
+    {
+        "id": "3017e826bf881fd5",
+        "type": "function",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Xử lý lỗi",
+        "func": "msg.headers=msg.headers||{},msg.headers[\"Access-Control-Allow-Origin\"]=\"*\";const response={status:\"error\",message:\"Tín hiệu không hợp lệ. Vui lòng kiểm tra lại.\",signal:msg.payload.signal,receivedAt:(new Date).toISOString()};return msg.payload=response,msg.statusCode=400,msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 220,
+        "y": 860,
+        "wires": [
+            [
+                "9746eece4131c52c",
+                "231b7798b1a3de24"
+            ]
+        ]
+    },
+    {
+        "id": "9746eece4131c52c",
+        "type": "http response",
+        "z": "d89f4497fa0cfb6c",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 470,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "8b48318a8d19f59b",
+        "type": "function",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Mở Sưởi",
+        "func": "var plcMsg={payload:!0},httpMsg={payload:{status:\"success\",message:\"Lệnh Mở Sưởi đã được gửi!\",signal:msg.payload.signal,value:!0},headers:{\"Access-Control-Allow-Origin\":\"*\"}};return console.log(\"🔵 Gửi lệnh Thành Công Mở Sưởi\"),[plcMsg,httpMsg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 220,
+        "wires": [
+            [
+                "aa324baf8b9e8771",
+                "231b7798b1a3de24"
+            ],
+            [
+                "9746eece4131c52c"
+            ]
+        ]
+    },
+    {
+        "id": "9b17e331c695c52a",
+        "type": "function",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Tắt Sưởi",
+        "func": "var plcMsg={payload:!1},httpMsg={payload:{status:\"success\",message:\"Lệnh Tắt Sưởi đã được gửi!\",signal:msg.payload.signal,value:!1},headers:{\"Access-Control-Allow-Origin\":\"*\"}};return console.log(\"🔵 Gửi lệnh Thành Công Tắt Sưởi\"),[plcMsg,httpMsg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 260,
+        "wires": [
+            [
+                "aa324baf8b9e8771",
+                "231b7798b1a3de24"
+            ],
+            [
+                "9746eece4131c52c"
+            ]
+        ]
+    },
+    {
+        "id": "706e81788b9f5faa",
+        "type": "function",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Mở Rèm",
+        "func": "var plcMsg={payload:!0},httpMsg={payload:{status:\"success\",message:\"Lệnh Mở Rèm đã được gửi!\",signal:msg.payload.signal,value:!0},headers:{\"Access-Control-Allow-Origin\":\"*\"}};return console.log(\"🔵 Gửi lệnh Thành Công Mở Rèm\"),[plcMsg,httpMsg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 300,
+        "wires": [
+            [
+                "41ad836143c64d0a",
+                "231b7798b1a3de24",
+                "ae26a2aa1ff51a1d"
+            ],
+            [
+                "9746eece4131c52c"
+            ]
+        ]
+    },
+    {
+        "id": "e202183f6e2bc154",
+        "type": "function",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Tắt Rèm",
+        "func": "var plcMsg={payload:!0},httpMsg={payload:{status:\"success\",message:\"Lệnh Mở Rèm đã được gửi!\",signal:msg.payload.signal,value:!0},headers:{\"Access-Control-Allow-Origin\":\"*\"}};return console.log(\"🔵 Gửi lệnh Thành Công Mở Rèm\"),[plcMsg,httpMsg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 340,
+        "wires": [
+            [
+                "8c44dc5651e3a599",
+                "231b7798b1a3de24",
+                "91f4ca789b8de472"
+            ],
+            [
+                "9746eece4131c52c"
+            ]
+        ]
+    },
+    {
+        "id": "231b7798b1a3de24",
+        "type": "debug",
+        "z": "d89f4497fa0cfb6c",
+        "name": "PLC Command Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1200,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "8c0dc4c67d271f67",
+        "type": "s7 out",
+        "z": "d89f4497fa0cfb6c",
+        "endpoint": "1d2cac2da0623277",
+        "variable": "M0.1",
+        "name": "Tưới cây",
+        "x": 1100,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "51cbbdd6032e73d2",
+        "type": "s7 out",
+        "z": "d89f4497fa0cfb6c",
+        "endpoint": "1d2cac2da0623277",
+        "variable": "M1.5",
+        "name": "Đèn vàng",
+        "x": 1140,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8c44dc5651e3a599",
+        "type": "s7 out",
+        "z": "d89f4497fa0cfb6c",
+        "endpoint": "1d2cac2da0623277",
+        "variable": "M0.4",
+        "name": "Rèm che đóng",
+        "x": 1080,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ee6b3d62511f5941",
+        "type": "function",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Mở Quạt",
+        "func": "var plcMsg={payload:!0},httpMsg={payload:{status:\"success\",message:\"Lệnh Mở Quạt đã được gửi!\",signal:msg.payload.signal,value:!0},headers:{\"Access-Control-Allow-Origin\":\"*\"}};return console.log(\"🔵 Gửi lệnh Thành Công Mở Quạt\"),[plcMsg,httpMsg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 720,
+        "wires": [
+            [
+                "231b7798b1a3de24",
+                "628d47c9e32e2772"
+            ],
+            [
+                "9746eece4131c52c"
+            ]
+        ]
+    },
+    {
+        "id": "5043845722801e81",
+        "type": "function",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Tắt Quạt",
+        "func": "var plcMsg={payload:!1},httpMsg={payload:{status:\"success\",message:\"Lệnh Tắt Quạt đã được gửi!\",signal:msg.payload.signal,value:!1},headers:{\"Access-Control-Allow-Origin\":\"*\"}};return console.log(\"🔵 Gửi lệnh Thành Công Tắt Quạt\"),[plcMsg,httpMsg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 760,
+        "wires": [
+            [
+                "231b7798b1a3de24",
+                "628d47c9e32e2772"
+            ],
+            [
+                "9746eece4131c52c"
+            ]
+        ]
+    },
+    {
+        "id": "628d47c9e32e2772",
+        "type": "s7 out",
+        "z": "d89f4497fa0cfb6c",
+        "endpoint": "1d2cac2da0623277",
+        "variable": "M1.2",
+        "name": "Quạt trang trại",
+        "x": 1160,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "aa324baf8b9e8771",
+        "type": "s7 out",
+        "z": "d89f4497fa0cfb6c",
+        "endpoint": "1d2cac2da0623277",
+        "variable": "M0.2",
+        "name": "Đèn hồng",
+        "x": 1280,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "41ad836143c64d0a",
+        "type": "s7 out",
+        "z": "d89f4497fa0cfb6c",
+        "endpoint": "1d2cac2da0623277",
+        "variable": "M0.5",
+        "name": "Rèm che mở",
+        "x": 1270,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "de65fff491e121ca",
+        "type": "s7 out",
+        "z": "d89f4497fa0cfb6c",
+        "endpoint": "1d2cac2da0623277",
+        "variable": "M1.1",
+        "name": "Bơm nước cho gà uống",
+        "x": 1190,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a166d8b437421a3c",
+        "type": "s7 out",
+        "z": "d89f4497fa0cfb6c",
+        "endpoint": "1d2cac2da0623277",
+        "variable": "M1.4",
+        "name": "Trạm trộn",
+        "x": 1120,
+        "y": 1320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c1d99f4578be3aae",
+        "type": "s7 out",
+        "z": "d89f4497fa0cfb6c",
+        "endpoint": "1d2cac2da0623277",
+        "variable": "M1.6",
+        "name": "Băng tải",
+        "x": 1120,
+        "y": 1260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "be73869f2f49fc64",
+        "type": "function",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Mở Đèn Sưởi",
+        "func": "var plcMsg={payload:!0},httpMsg={payload:{status:\"success\",message:\"Lệnh Mở Đèn Sưởi đã được gửi!\",signal:msg.payload.signal,value:!0},headers:{\"Access-Control-Allow-Origin\":\"*\"}};return console.log(\"🔵 Gửi lệnh Thành Công Mở Đèn Sưởi\"),[plcMsg,httpMsg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 800,
+        "wires": [
+            [
+                "231b7798b1a3de24",
+                "51cbbdd6032e73d2"
+            ],
+            [
+                "9746eece4131c52c"
+            ]
+        ]
+    },
+    {
+        "id": "1bdea1ac06d85952",
+        "type": "function",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Tắt Đèn Sưởi",
+        "func": "var plcMsg={payload:!1},httpMsg={payload:{status:\"success\",message:\"Lệnh Tắt Đèn Sưởi đã được gửi!\",signal:msg.payload.signal,value:!1},headers:{\"Access-Control-Allow-Origin\":\"*\"}};return console.log(\"🔵 Gửi lệnh Thành Công Tắt Đèn Sưởi\"),[plcMsg,httpMsg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 840,
+        "wires": [
+            [
+                "231b7798b1a3de24",
+                "51cbbdd6032e73d2"
+            ],
+            [
+                "9746eece4131c52c"
+            ]
+        ]
+    },
+    {
+        "id": "0b1c3dbeedb0f478",
+        "type": "function",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Mở bơm nước uống",
+        "func": "var plcMsg={payload:!0},httpMsg={payload:{status:\"success\",message:\"Lệnh Mở Bơm Nước Uống đã được gửi!\",signal:msg.payload.signal,value:!0},headers:{\"Access-Control-Allow-Origin\":\"*\"}};return console.log(\"🔵 Gửi lệnh Thành Công Mở Nước Uống\"),[plcMsg,httpMsg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 880,
+        "wires": [
+            [
+                "231b7798b1a3de24",
+                "de65fff491e121ca"
+            ],
+            [
+                "9746eece4131c52c"
+            ]
+        ]
+    },
+    {
+        "id": "e254647ef7a13fb0",
+        "type": "function",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Tắt bơm nước uống",
+        "func": "var plcMsg={payload:!1},httpMsg={payload:{status:\"success\",message:\"Lệnh Tắt Bơm Nước Uống đã được gửi!\",signal:msg.payload.signal,value:!1},headers:{\"Access-Control-Allow-Origin\":\"*\"}};return console.log(\"🔵 Gửi lệnh Thành Công Tắt Nước Uống\"),[plcMsg,httpMsg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 920,
+        "wires": [
+            [
+                "231b7798b1a3de24",
+                "de65fff491e121ca"
+            ],
+            [
+                "9746eece4131c52c"
+            ]
+        ]
+    },
+    {
+        "id": "0204835c7c917971",
+        "type": "function",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Trộn thức ăn",
+        "func": "var plcMsg={payload:!0},httpMsg={payload:{status:\"success\",message:\"Lệnh Trộn Thức Ăn đã được gửi!\",signal:msg.payload.signal,value:!0},headers:{\"Access-Control-Allow-Origin\":\"*\"}};return console.log(\"🔵 Gửi lệnh Thành Công Trộn Thức Ăn\"),[plcMsg,httpMsg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 1340,
+        "wires": [
+            [
+                "231b7798b1a3de24",
+                "a166d8b437421a3c",
+                "fdc9449fef14e27a"
+            ],
+            [
+                "9746eece4131c52c"
+            ]
+        ]
+    },
+    {
+        "id": "a4edd3190d8aa503",
+        "type": "function",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Thuốc",
+        "func": "var plcMsg = { payload: !1 }, httpMsg = { payload: { status: \"success\", message: \"Lệnh Tắt Trộn Thức Ăn đã được gửi!\", signal: msg.payload.signal, value: !1 }, headers: { \"Access-Control-Allow-Origin\": \"*\" } }; return console.log(\"🔵 Gửi lệnh Thành Công Tắt Thuốc\"), [plcMsg, httpMsg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 890,
+        "y": 1060,
+        "wires": [
+            [
+                "231b7798b1a3de24",
+                "8cb15d1a8b5b643f"
+            ],
+            [
+                "9746eece4131c52c"
+            ]
+        ]
+    },
+    {
+        "id": "3ba97f70710b799f",
+        "type": "function",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Tắt trộn thức ăn",
+        "func": "var plcMsg={payload:!1},httpMsg={payload:{status:\"success\",message:\"Lệnh Tắt Trộn Thức Ăn đã được gửi!\",signal:msg.payload.signal,value:!1},headers:{\"Access-Control-Allow-Origin\":\"*\"}};return console.log(\"🔵 Gửi lệnh Thành Công Tắt Trộn Thức Ăn\"),[plcMsg,httpMsg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 900,
+        "y": 1460,
+        "wires": [
+            [
+                "231b7798b1a3de24",
+                "a166d8b437421a3c"
+            ],
+            [
+                "9746eece4131c52c"
+            ]
+        ]
+    },
+    {
+        "id": "0496dad2d42b49f2",
+        "type": "s7 in",
+        "z": "d89f4497fa0cfb6c",
+        "endpoint": "1d2cac2da0623277",
+        "mode": "single",
+        "diff": true,
+        "name": "Connection Keep-Alive",
+        "x": 300,
+        "y": 160,
+        "wires": [
+            [
+                "95a3c793db2b2210"
+            ]
+        ]
+    },
+    {
+        "id": "95a3c793db2b2210",
+        "type": "debug",
+        "z": "d89f4497fa0cfb6c",
+        "name": "PLC Heartbeat",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 540,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "641961ad70a0117c",
+        "type": "function",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Mở Nước",
+        "func": "var plcMsg={payload:!0},httpMsg={payload:{status:\"success\",message:\"Lệnh Mở Nước đã được gửi!\",signal:msg.payload.signal,value:!0},headers:{\"Access-Control-Allow-Origin\":\"*\"}};return console.log(\"🔵 Gửi lệnh Thành Công Mở Nước\"),[plcMsg,httpMsg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 140,
+        "wires": [
+            [
+                "231b7798b1a3de24",
+                "8c0dc4c67d271f67"
+            ],
+            [
+                "9746eece4131c52c"
+            ]
+        ]
+    },
+    {
+        "id": "e492978a0cab4f4e",
+        "type": "function",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Tắt Nước",
+        "func": "var plcMsg={payload:!1},httpMsg={payload:{status:\"success\",message:\"Lệnh Tắt Nước đã được gửi!\",signal:msg.payload.signal,value:!1},headers:{\"Access-Control-Allow-Origin\":\"*\"}};return console.log(\"🔵 Gửi lệnh Thành Công Tắt Nước\"),[plcMsg,httpMsg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 180,
+        "wires": [
+            [
+                "231b7798b1a3de24",
+                "8c0dc4c67d271f67"
+            ],
+            [
+                "9746eece4131c52c"
+            ]
+        ]
+    },
+    {
+        "id": "83ba1e8d7f2ea86a",
+        "type": "function",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Mở Phun",
+        "func": "var plcMsg={payload:!0},httpMsg={payload:{status:\"success\",message:\"Lệnh Mở Nước đã được gửi!\",signal:msg.payload.signal,value:!0},headers:{\"Access-Control-Allow-Origin\":\"*\"}};return console.log(\"🔵 Gửi lệnh Thành Công Mở Phun\"),[plcMsg,httpMsg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 460,
+        "wires": [
+            [
+                "9e373af57e415398",
+                "50561940e48caf51"
+            ],
+            [
+                "9746eece4131c52c"
+            ]
+        ]
+    },
+    {
+        "id": "dd108208511d0ff8",
+        "type": "function",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Tắt Phun",
+        "func": "var plcMsg={payload:!1},httpMsg={payload:{status:\"success\",message:\"Lệnh Tắt Nước đã được gửi!\",signal:msg.payload.signal,value:!1},headers:{\"Access-Control-Allow-Origin\":\"*\"}};return console.log(\"🔵 Gửi lệnh Thành Công Tắt Phun\"),[plcMsg,httpMsg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 420,
+        "wires": [
+            [
+                "9e373af57e415398"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "08ceba5dc7525e48",
+        "type": "function",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Tắt Bón Phân",
+        "func": "var plcMsg={payload:!1},httpMsg={payload:{status:\"success\",message:\"Lệnh Tắt Nước đã được gửi!\",signal:msg.payload.signal,value:!1},headers:{\"Access-Control-Allow-Origin\":\"*\"}};return console.log(\"🔵 Gửi lệnh Thành Công Tắt Bón Phân\"),[plcMsg,httpMsg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 660,
+        "wires": [
+            [
+                "8c0dc4c67d271f67"
+            ],
+            [
+                "9746eece4131c52c"
+            ]
+        ]
+    },
+    {
+        "id": "746f1f4becab8ca4",
+        "type": "function",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Bón Phân",
+        "func": "var plcMsg={payload:!0},httpMsg={payload:{status:\"success\",message:\"Lệnh Mở Nước đã được gửi!\",signal:msg.payload.signal,value:!0},headers:{\"Access-Control-Allow-Origin\":\"*\"}};return console.log(\"🔵 Gửi lệnh Thành Công Mở Bón Phân\"),[plcMsg,httpMsg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 620,
+        "wires": [
+            [
+                "8c0dc4c67d271f67"
+            ],
+            [
+                "9746eece4131c52c"
+            ]
+        ]
+    },
+    {
+        "id": "4893363c8013f3ae",
+        "type": "function",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Thuốc",
+        "func": "var plcMsg={payload:!0},httpMsg={payload:{status:\"success\",message:\"Lệnh Bật Băng Tải đã được gửi!\",signal:msg.payload.signal,value:!0},headers:{\"Access-Control-Allow-Origin\":\"*\"}};return console.log(\"🔵 Gửi lệnh Thành Công Tắt Thuốc\"),[plcMsg,httpMsg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 1060,
+        "wires": [
+            [
+                "231b7798b1a3de24",
+                "8cb15d1a8b5b643f",
+                "045eeea0abd9ea35"
+            ],
+            [
+                "9746eece4131c52c"
+            ]
+        ]
+    },
+    {
+        "id": "55be5ee41aa5b56f",
+        "type": "function",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Mở Rèm",
+        "func": "var plcMsg = { payload: !1 }, httpMsg = { payload: { status: \"success\", message: \"Lệnh Tắt Rèm đã được gửi!\", signal: msg.payload.signal, value: !1 }, headers: { \"Access-Control-Allow-Origin\": \"*\" } }; return console.log(\"🔵 Gửi lệnh Thành Công Tắt Rèm\"), [plcMsg, httpMsg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1140,
+        "y": 220,
+        "wires": [
+            [
+                "41ad836143c64d0a"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "7cf6872246f40784",
+        "type": "function",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Tắt Rèm",
+        "func": "var plcMsg = { payload: !1 }, httpMsg = { payload: { status: \"success\", message: \"Lệnh Tắt Rèm đã được gửi!\", signal: msg.payload.signal, value: !1 }, headers: { \"Access-Control-Allow-Origin\": \"*\" } }; return console.log(\"🔵 Gửi lệnh Thành Công Tắt Rèm\"), [plcMsg, httpMsg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 380,
+        "wires": [
+            [
+                "231b7798b1a3de24",
+                "8c44dc5651e3a599"
+            ],
+            [
+                "9746eece4131c52c"
+            ]
+        ]
+    },
+    {
+        "id": "0fc7d06c576b7342",
+        "type": "inject",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Bật M0.1",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 1120,
+        "y": 60,
+        "wires": [
+            [
+                "aa324baf8b9e8771",
+                "fe28f93d1567b184"
+            ]
+        ]
+    },
+    {
+        "id": "66e21f2da5e321e2",
+        "type": "function",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Tắt Sưởi",
+        "func": "var plcMsg={payload:!1},httpMsg={payload:{status:\"success\",message:\"Lệnh Tắt Sưởi đã được gửi!\",signal:msg.payload.signal,value:!1},headers:{\"Access-Control-Allow-Origin\":\"*\"}};return console.log(\"🔵 Gửi lệnh Thành Công Tắt Sưởi\"),[plcMsg,httpMsg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1400,
+        "y": 100,
+        "wires": [
+            [
+                "aa324baf8b9e8771"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "fe28f93d1567b184",
+        "type": "delay",
+        "z": "d89f4497fa0cfb6c",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1270,
+        "y": 60,
+        "wires": [
+            [
+                "66e21f2da5e321e2"
+            ]
+        ]
+    },
+    {
+        "id": "9c9ff7343848ad21",
+        "type": "inject",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Tắt M0.1",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "false",
+        "payloadType": "bool",
+        "x": 1100,
+        "y": 140,
+        "wires": [
+            [
+                "aa324baf8b9e8771"
+            ]
+        ]
+    },
+    {
+        "id": "ae26a2aa1ff51a1d",
+        "type": "delay",
+        "z": "d89f4497fa0cfb6c",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "3800",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 980,
+        "y": 260,
+        "wires": [
+            [
+                "55be5ee41aa5b56f"
+            ]
+        ]
+    },
+    {
+        "id": "9e373af57e415398",
+        "type": "s7 out",
+        "z": "d89f4497fa0cfb6c",
+        "endpoint": "1d2cac2da0623277",
+        "variable": "M0.3",
+        "name": "Siêu Sáng",
+        "x": 1470,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "50561940e48caf51",
+        "type": "delay",
+        "z": "d89f4497fa0cfb6c",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "2",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 780,
+        "y": 420,
+        "wires": [
+            [
+                "dd108208511d0ff8"
+            ]
+        ]
+    },
+    {
+        "id": "91f4ca789b8de472",
+        "type": "delay",
+        "z": "d89f4497fa0cfb6c",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "3900",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 440,
+        "y": 300,
+        "wires": [
+            [
+                "7cf6872246f40784"
+            ]
+        ]
+    },
+    {
+        "id": "bab691a64025054b",
+        "type": "inject",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Bật M0.1",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 240,
+        "y": 340,
+        "wires": [
+            [
+                "e202183f6e2bc154"
+            ]
+        ]
+    },
+    {
+        "id": "8cb15d1a8b5b643f",
+        "type": "s7 out",
+        "z": "d89f4497fa0cfb6c",
+        "endpoint": "1d2cac2da0623277",
+        "variable": "M1.3",
+        "name": "Đèn SIêu Sáng ( Nuôi )",
+        "x": 1190,
+        "y": 1160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "afb3aa120e092d35",
+        "type": "inject",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Bật M0.1",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 460,
+        "y": 1140,
+        "wires": [
+            [
+                "4893363c8013f3ae"
+            ]
+        ]
+    },
+    {
+        "id": "045eeea0abd9ea35",
+        "type": "delay",
+        "z": "d89f4497fa0cfb6c",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "2",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 710,
+        "y": 1160,
+        "wires": [
+            [
+                "a4edd3190d8aa503"
+            ]
+        ]
+    },
+    {
+        "id": "0a0af54a1d1dac6d",
+        "type": "function",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Tắt Phun Mát",
+        "func": "var plcMsg={payload:!1},httpMsg={payload:{status:\"success\",message:\"Lệnh Tắt Nước đã được gửi!\",signal:msg.payload.signal,value:!1},headers:{\"Access-Control-Allow-Origin\":\"*\"}};return console.log(\"🔵 Gửi lệnh Thành Công Tắt Nước\"),[plcMsg,httpMsg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1400,
+        "y": 780,
+        "wires": [
+            [
+                "9e373af57e415398"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "16f3fa28f5ca4849",
+        "type": "function",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Mở Phun Mát",
+        "func": "var plcMsg={payload:!0},httpMsg={payload:{status:\"success\",message:\"Lệnh Mở Nước đã được gửi!\",signal:msg.payload.signal,value:!0},headers:{\"Access-Control-Allow-Origin\":\"*\"}};return console.log(\"🔵 Gửi lệnh Thành Công Mở Nước\"),[plcMsg,httpMsg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1400,
+        "y": 740,
+        "wires": [
+            [
+                "9e373af57e415398"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "249d0f375cc7fe2d",
+        "type": "inject",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Tắt M0.1",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "false",
+        "payloadType": "bool",
+        "x": 880,
+        "y": 1220,
+        "wires": [
+            [
+                "8cb15d1a8b5b643f"
+            ]
+        ]
+    },
+    {
+        "id": "896f7f54b0048bf0",
+        "type": "inject",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Bật M0.1",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 880,
+        "y": 1180,
+        "wires": [
+            [
+                "8cb15d1a8b5b643f"
+            ]
+        ]
+    },
+    {
+        "id": "936604e759345131",
+        "type": "inject",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Tắt M0.1",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "false",
+        "payloadType": "bool",
+        "x": 1340,
+        "y": 680,
+        "wires": [
+            [
+                "9e373af57e415398"
+            ]
+        ]
+    },
+    {
+        "id": "fca2ce4589b0cd3d",
+        "type": "inject",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Bật M0.1",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 1340,
+        "y": 640,
+        "wires": [
+            [
+                "9e373af57e415398"
+            ]
+        ]
+    },
+    {
+        "id": "dda36643521ae9cf",
+        "type": "delay",
+        "z": "d89f4497fa0cfb6c",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "3",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 660,
+        "y": 1300,
+        "wires": [
+            [
+                "8cdfc3490f6a11e6"
+            ]
+        ]
+    },
+    {
+        "id": "fdc9449fef14e27a",
+        "type": "delay",
+        "z": "d89f4497fa0cfb6c",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "3",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 800,
+        "y": 1400,
+        "wires": [
+            [
+                "3ba97f70710b799f"
+            ]
+        ]
+    },
+    {
+        "id": "8cdfc3490f6a11e6",
+        "type": "function",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Trộn thức ăn",
+        "func": "var plcMsg={payload:!0},httpMsg={payload:{status:\"success\",message:\"Lệnh Trộn Thức Ăn đã được gửi!\",signal:msg.payload.signal,value:!0},headers:{\"Access-Control-Allow-Origin\":\"*\"}};return console.log(\"🔵 Gửi lệnh Thành Công Trộn Thức Ăn\"),[plcMsg,httpMsg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 910,
+        "y": 1280,
+        "wires": [
+            [
+                "c1d99f4578be3aae"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "8b2f174dc4f2d889",
+        "type": "inject",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Tắt M0.1",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "false",
+        "payloadType": "bool",
+        "x": 420,
+        "y": 1380,
+        "wires": [
+            [
+                "4b9eb7853ca1a70d"
+            ]
+        ]
+    },
+    {
+        "id": "a97a6e3b0ec7c9fa",
+        "type": "inject",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Bật M0.1",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 420,
+        "y": 1340,
+        "wires": [
+            [
+                "dda36643521ae9cf",
+                "0204835c7c917971"
+            ]
+        ]
+    },
+    {
+        "id": "4b9eb7853ca1a70d",
+        "type": "function",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Tắt trộn thức ăn",
+        "func": "var plcMsg={payload:!1},httpMsg={payload:{status:\"success\",message:\"Lệnh Tắt Trộn Thức Ăn đã được gửi!\",signal:msg.payload.signal,value:!1},headers:{\"Access-Control-Allow-Origin\":\"*\"}};return console.log(\"🔵 Gửi lệnh Thành Công Tắt Trộn Thức Ăn\"),[plcMsg,httpMsg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 1440,
+        "wires": [
+            [
+                "c1d99f4578be3aae",
+                "a166d8b437421a3c"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "25b71cd6ca3b27e0",
+        "type": "function",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Tắt ALL",
+        "func": "var plcMsg={payload:!1},httpMsg={payload:{status:\"success\",message:\"Lệnh Tắt Quạt đã được gửi!\",signal:msg.payload.signal,value:!1},headers:{\"Access-Control-Allow-Origin\":\"*\"}};return console.log(\"🔵 Gửi lệnh Thành Công Tắt Quạt\"),[plcMsg,httpMsg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 1060,
+        "wires": [
+            [
+                "aa324baf8b9e8771",
+                "8c44dc5651e3a599",
+                "41ad836143c64d0a",
+                "8c0dc4c67d271f67",
+                "9e373af57e415398",
+                "628d47c9e32e2772",
+                "51cbbdd6032e73d2",
+                "de65fff491e121ca",
+                "8cb15d1a8b5b643f",
+                "c1d99f4578be3aae",
+                "a166d8b437421a3c"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "d5c621db3be69d6c",
+        "type": "inject",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Bật M0.1",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 120,
+        "y": 980,
+        "wires": [
+            [
+                "25b71cd6ca3b27e0"
+            ]
+        ]
+    },
+    {
+        "id": "2e53bc3410954b34",
+        "type": "inject",
+        "z": "d89f4497fa0cfb6c",
+        "name": "Bật Mở Rèm",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 170,
+        "y": 220,
+        "wires": [
+            [
+                "706e81788b9f5faa"
+            ]
+        ]
+    },
+    {
+        "id": "1d2cac2da0623277",
+        "type": "s7 endpoint",
+        "transport": "iso-on-tcp",
+        "address": "192.168.1.20",
+        "port": "102",
+        "rack": "0",
+        "slot": "1",
+        "localtsaphi": "01",
+        "localtsaplo": "00",
+        "remotetsaphi": "01",
+        "remotetsaplo": "00",
+        "connmode": "rack-slot",
+        "adapter": "",
+        "busaddr": 2,
+        "cycletime": 1000,
+        "timeout": 2000,
+        "name": "S7-1200",
+        "vartable": [
+            {
+                "addr": "M0.1",
+                "name": "M0.1"
+            },
+            {
+                "addr": "M0.2",
+                "name": "M0.2"
+            },
+            {
+                "addr": "M0.3",
+                "name": "M0.3"
+            },
+            {
+                "addr": "M0.4",
+                "name": "M0.4"
+            },
+            {
+                "addr": "M0.5",
+                "name": "M0.5"
+            },
+            {
+                "addr": "M1.0",
+                "name": "M1.0"
+            },
+            {
+                "addr": "M1.1",
+                "name": "M1.1"
+            },
+            {
+                "addr": "M1.2",
+                "name": "M1.2"
+            },
+            {
+                "addr": "M1.3",
+                "name": "M1.3"
+            },
+            {
+                "addr": "M1.4",
+                "name": "M1.4"
+            },
+            {
+                "addr": "M1.5",
+                "name": "M1.5"
+            },
+            {
+                "addr": "M1.6",
+                "name": "M1.6"
+            }
+        ]
+    },
+    {
+        "id": "d2b8fcbb64f63e06",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "@oriolrius/node-red-contrib-s7": "4.2.0"
+        }
+    }
+]
